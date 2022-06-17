@@ -7,11 +7,10 @@ export default function Movie({
 }) {
 
   return (
-    <div className="movie-preview" style={{ background: movieColor }}>
+    <div className="movie-card" style={{ background: movieColor }}>
       <h2>{movieTitle}</h2>
       <p>{movieYear}</p>
       <p>{movieDirector}</p>
     </div>
-
   );
 }

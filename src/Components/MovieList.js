@@ -5,10 +5,16 @@ export default function MovieList({ handleDeleteMovie, filteredMovies, movie }) 
     <div className='movie-list'>
       {
         filteredMovies.map((movie, i) => (
-          <Movie
+          <div
             handleDeleteMovie={handleDeleteMovie}
             key={movie.title + i}
-            movie={movie}/>
+            movie={movie}
+            className="movie-card"
+            style={{ background: movie.color }}>
+            <h2>{movie.title}</h2>
+            <p>{movie.year}</p>
+            <p>{movie.director}</p>
+          </div>
         ))
       }
     </div>
