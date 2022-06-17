@@ -18,19 +18,19 @@ function App() {
       title: 'Titanic',
       director: 'James Cameron',
       year: '1997',
-      color: 'pink', 
+      color: 'goldenrod', 
     },
     {
       title: 'Nausicaa Valley of the Wind',
       director: 'Hayao Miyazaki',
       year: '1984',
-      color: 'blue', 
+      color: 'Chocolate', 
     },
     {
       title: 'Moonlight',
       director: 'Barry Jenkins',
       year: '2017',
-      color: 'red', 
+      color: 'skyblue', 
     }
   ]);
   //filter state 
@@ -72,7 +72,7 @@ function App() {
   }
 
   return (
-    <div className="App" style={{ backgroundColor: 'salmon' }}>
+    <div className="App" style={{ backgroundColor: 'salmon', borderRadius: '10px' }}>
       <MovieForm
         handleSubmit={handleSubmit} 
         movieTitle={movieTitle}
