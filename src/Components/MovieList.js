@@ -1,7 +1,7 @@
 import Movie from './Movie.js';
 
 export default function MovieList({ handleDeleteMovie, filteredMovies }) {
-  console.table(filteredMovies);
+  // console.table(filteredMovies);
   return (
     <div className='movie-list'>
       {
