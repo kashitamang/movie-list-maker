@@ -13,14 +13,19 @@ function App() {
   const [movieYear, setMovieYear] = useState('');
   const [movieDirector, setMovieDirector] = useState('');
   const [movieColor, setMovieColor] = useState('');
-  const [allMovies, setAllMovies] = useState([]);
+  const [allMovies, setAllMovies] = useState([{
+    title: 'Titanic',
+    director: 'James Cameron',
+    year: '1997',
+    color: 'pink', }
+  ]);
   //filter state 
   const [filteredMovies, setFilteredMovies] = useState(allMovies);
   const [filterMovie, setFilterMovie] = useState('');
   //put use effect here
+  useEffect(() => handleFilterMovies(filterMovie), [allMovies, filterMovie]);
 
-
-  console.table(allMovies);
+  console.table(movieTitle);
 
   //functions
   function handleSubmit(e) {
@@ -34,6 +39,22 @@ function App() {
     };
 
     setAllMovies([...allMovies, movie]);
+    setMovieTitle('');
+    setMovieDirector('');
+    setMovieYear('');
+    setMovieColor('');
+  }
+
+  function handleDeleteMovie(title) {
+    const movieIndex = allMovies.findIndex(movie => movie.title === title);
+    allMovies.splice(movieIndex, 1);
+    setAllMovies([...allMovies]);
+  }
+
+  function handleFilterMovies(search) {
+    const searchMovies = allMovies.filter((movie) => movie.title.includes(search));
+
+    setFilteredMovies(searchMovies);
   }
 
   return (
@@ -49,6 +70,10 @@ function App() {
         movieColor={movieColor}
         setMovieColor={setMovieColor}
       />
+      <label>
+        search:
+        <input value={filterMovie} onChange={e => filteredMovies(e.target.value)}/>
+      </label>
       <Movie 
         movieTitle={movieTitle}
         movieYear={movieYear}
@@ -56,8 +81,8 @@ function App() {
         movieColor={movieColor}
       />
       <MovieList
-        filteredMovies={allMovies}
-        // handleDeleteMovie={handleDeleteMovie}
+        filteredMovies={filteredMovies}
+        handleDeleteMovie={handleDeleteMovie}
       />
     </div>
   );

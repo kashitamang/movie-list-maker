@@ -1,16 +1,23 @@
 export default function Movie({ 
+  handleDeleteMovie, 
   movieTitle, 
-  movieYear, 
-  movieDirector, 
+  movieDirector,
+  movieYear,
   movieColor,
-//   handleDeleteMovie, 
+
 }) {
+//   console.log(movie);
 
   return (
-    <div className="movie-card" style={{ background: movieColor }}>
+    <div className="movie-card" 
+      onClick={() => handleDeleteMovie && handleDeleteMovie(movieTitle)} style={{ backgroundColor: movieColor }}>
       <h2>{movieTitle}</h2>
       <p>{movieYear}</p>
       <p>{movieDirector}</p>
     </div>
   );
 }
+
+///getting errors :D check in with TA 
+
+// 
