@@ -19,10 +19,12 @@ function App() {
   const [filterMovie, setFilterMovie] = useState('');
   //put use effect here
 
-  //functions
 
+  console.table(allMovies);
+
+  //functions
   function handleSubmit(e) {
-    e.prevent.default();
+    e.preventDefault();
 
     const movie = {
       title: movieTitle,
@@ -30,9 +32,8 @@ function App() {
       director: movieDirector,
       color: movieColor,
     };
-    const updatedMovies = [...allMovies, movie];
 
-    setAllMovies(updatedMovies);
+    setAllMovies([...allMovies, movie]);
   }
 
   return (
@@ -53,6 +54,10 @@ function App() {
         movieYear={movieYear}
         movieDirector={movieDirector}
         movieColor={movieColor}
+      />
+      <MovieList
+        filteredMovies={allMovies}
+        // handleDeleteMovie={handleDeleteMovie}
       />
     </div>
   );

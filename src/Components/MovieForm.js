@@ -22,7 +22,7 @@ export default function MovieForm({
         </label>
         <label>
             year
-          <input value={movieYear}
+          <input value={movieYear} 
             onChange={(e) => setMovieYear(e.target.value)}/>
         </label>
         <label>
