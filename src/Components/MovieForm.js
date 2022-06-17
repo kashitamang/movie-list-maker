@@ -1,4 +1,3 @@
-import Movie from './Movie.js';
 
 export default function MovieForm({ 
   handleSubmit, 

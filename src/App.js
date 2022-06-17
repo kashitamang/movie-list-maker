@@ -35,9 +35,13 @@ function App() {
   ]);
   //filter state 
   const [filteredMovies, setFilteredMovies] = useState(allMovies);
-  const [filterMovie, setFilterMovie] = useState('');
+  const [filterMovie, setFilterMovie] = useState(''); 
   //put use effect here
-  useEffect(() => handleFilterMovies(filterMovie), [allMovies, filterMovie]);
+  useEffect(() => {
+    setFilteredMovies(allMovies); 
+    setFilterMovie(''); 
+  }, [allMovies]);
+  // useEffect(() => {handleFilterMovies(filterMovie)}, [allMovies, filterMovie]);
 
   // console.table(movieTitle);
 
@@ -66,7 +70,11 @@ function App() {
   }
 
   function handleFilterMovies(search) {
-    const searchMovies = allMovies.filter((movie) => movie.title.includes(search));
+    setFilterMovie(search);
+
+    const searchMovies = allMovies.filter((movie) => 
+      movie.title.toLowerCase()
+        .includes(search.toLowerCase()));
 
     setFilteredMovies(searchMovies);
   }
@@ -86,7 +94,7 @@ function App() {
       />
       <label>
         search:
-        <input onChange={e => setFilterMovie(e.target.value)}/>
+        <input value={filterMovie} onChange={e => handleFilterMovies(e.target.value)}/>
       </label>
       <Movie 
         movieTitle={movieTitle}
