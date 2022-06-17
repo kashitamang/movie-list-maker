@@ -69,8 +69,12 @@ function App() {
     setAllMovies([...allMovies]);
   }
 
-  function handleFilterMovies(filterMovie) {
-    const searchMovies = allMovies.filter((movie) => movie.title.includes(filterMovie));
+  function handleFilterMovies(search) {
+    setFilterMovie(search);
+
+    const searchMovies = allMovies.filter((movie) => 
+      movie.title.toLowerCase()
+        .includes(search.toLowerCase()));
 
     setFilteredMovies(searchMovies);
   }
@@ -90,7 +94,7 @@ function App() {
       />
       <label>
         search:
-        <input onChange={e => handleFilterMovies(e.target.value)}/>
+        <input value={filterMovie} onChange={e => handleFilterMovies(e.target.value)}/>
       </label>
       <Movie 
         movieTitle={movieTitle}
