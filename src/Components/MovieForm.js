@@ -33,10 +33,10 @@ export default function MovieForm({
         <label>
       color
           <select value={movieColor} onChange={e => setMovieColor(e.target.value)}>
-            <option value="red">red</option>
-            <option value="blue">blue</option>
-            <option value="green">green</option>
-            <option value="yellow">yellow</option>
+            <option value="pink">red</option>
+            <option value="skyblue">blue</option>
+            <option value="chartreuse">green</option>
+            <option value="goldenrod">yellow</option>
           </select>
         </label>
         <button>add to watch list</button>

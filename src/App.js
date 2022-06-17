@@ -13,11 +13,25 @@ function App() {
   const [movieYear, setMovieYear] = useState('');
   const [movieDirector, setMovieDirector] = useState('');
   const [movieColor, setMovieColor] = useState('');
-  const [allMovies, setAllMovies] = useState([{
-    title: 'Titanic',
-    director: 'James Cameron',
-    year: '1997',
-    color: 'pink', }
+  const [allMovies, setAllMovies] = useState([
+    {
+      title: 'Titanic',
+      director: 'James Cameron',
+      year: '1997',
+      color: 'pink', 
+    },
+    {
+      title: 'Nausicaa Valley of the Wind',
+      director: 'Hayao Miyazaki',
+      year: '1984',
+      color: 'blue', 
+    },
+    {
+      title: 'Moonlight',
+      director: 'Barry Jenkins',
+      year: '2017',
+      color: 'red', 
+    }
   ]);
   //filter state 
   const [filteredMovies, setFilteredMovies] = useState(allMovies);
@@ -25,7 +39,7 @@ function App() {
   //put use effect here
   useEffect(() => handleFilterMovies(filterMovie), [allMovies, filterMovie]);
 
-  console.table(movieTitle);
+  // console.table(movieTitle);
 
   //functions
   function handleSubmit(e) {
@@ -58,7 +72,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundColor: 'salmon' }}>
       <MovieForm
         handleSubmit={handleSubmit} 
         movieTitle={movieTitle}
@@ -72,7 +86,7 @@ function App() {
       />
       <label>
         search:
-        <input value={filterMovie} onChange={e => filteredMovies(e.target.value)}/>
+        <input onChange={e => setFilterMovie(e.target.value)}/>
       </label>
       <Movie 
         movieTitle={movieTitle}
